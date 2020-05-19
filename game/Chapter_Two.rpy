@@ -142,6 +142,13 @@ label Chapter1_End_Cash_Dead:
 
 
 label Chapter_Two_Morning:
+
+    $ chap_two_days += 1
+    if chap_two_days == 3:
+        jump Start_chp3
+
+
+
     scene Farmhouse_Day
     "You wake up feeling refreshed. What do you do?"
 
@@ -210,12 +217,18 @@ label John_info:
         mc "Mine own time period there was not a known thing called a television. I musth be in the future!"
         mc "I will continue to do work as I learn more about this place."
         $ info = True
-        jump Chapter_Two_Morning
+        if CurrentChap == 2:
+            jump Chapter_Two_Morning
+        if CurrentChap == 3:
+            jump Chapter_Three_Morning
     else:
         with Dissolve(0.3)
         scene Ranch_Sunset
         "You tend to the crops with John for the day."
-        jump Chapter_Two_Morning
+        if CurrentChap == 2:
+            jump Chapter_Two_Morning
+        if CurrentChap == 3:
+            jump Chapter_Three_Morning
 
 label time_with_jane:
     with Dissolve(0.3)
@@ -246,7 +259,10 @@ label time_with_jane:
     mc "What a lovely woman. She certainly knoweth how to make a chat entertaining."
     mc "Jane seemeth to be in touch with many people. I must have her introduce me."
     mc "Perhaps they can satiate my needs when the time comes."
-    jump Chapter_Two_Morning
+    if CurrentChap == 2:
+        jump Chapter_Two_Morning
+    if CurrentChap == 3:
+        jump Chapter_Three_Morning
 
 label time_with_cash:
     with Dissolve(0.5)
@@ -278,7 +294,10 @@ label time_with_cash:
     mc "That man is a strange one. He stayeth in the creek in solitude."
     mc "However, his company is not unpleasant."
     mc "Perhaps I shall visit him again and ask him something different."
-    jump Chapter_Two_Morning
+    if CurrentChap == 2:
+        jump Chapter_Two_Morning
+    if CurrentChap == 3:
+        jump Chapter_Three_Morning
 
 
 label Death_bad_end:
